@@ -11,4 +11,16 @@ class GithubRepoScraper:
         self.save_file_path = "repo.json"
 
     def scrape_repos(self):
-        pass
+        """
+        Method for scraping repos
+        :return:
+        """
+        url = f"{self.base_url}?tab=repositories"
+        print(f"[GithubRepoScraper] Scraping repos from url: {url}")
+        res = requests.get(url=url)
+        bs = BeautifulSoup(res.content, features="html.parser")
+
+        # all repos
+        div = bs.find("div", id="user-repositories-list")
+        repos_infos = div.find_all('li')
+        repos = []

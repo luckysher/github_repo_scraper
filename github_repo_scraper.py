@@ -24,3 +24,23 @@ class GithubRepoScraper:
         div = bs.find("div", id="user-repositories-list")
         repos_infos = div.find_all('li')
         repos = []
+        for repo in repos_infos:
+
+            # Extract repo name
+            repo_name = repo.find("h3").find("a").text
+
+            # repo access type
+            repo_access_type = repo.find("h3").find_all("span")[1].text
+
+            # Extract programing language
+            lang_tag = repo.find("span", itemprop="programmingLanguage")
+            programming_lang = lang_tag.text if lang_tag else ""
+
+            # description
+            desc_tag = repo.find("p", itemprop="description")
+            description = desc_tag.text if desc_tag else ""
+            repo_data = {'repo_name': repo_name, 'programing_language': programming_lang, 'repo_type': repo_access_type, 'description': description}
+
+            print(repo_data)
+            repos.append(repo_data)
+            print("-----------")

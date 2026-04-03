@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import json
+import time
 
 class GithubRepoScraper:
     """
@@ -11,10 +13,6 @@ class GithubRepoScraper:
         self.save_file_path = "repo.json"
 
     def scrape_repos(self):
-        """
-        Method for scraping repos
-        :return:
-        """
         url = f"{self.base_url}?tab=repositories"
         print(f"[GithubRepoScraper] Scraping repos from url: {url}")
         res = requests.get(url=url)
@@ -47,3 +45,11 @@ class GithubRepoScraper:
             except Exception as e:
                 print("[Exception] Got Exception while extracting repo name ")
                 print(e)
+
+        with open(self.save_file_path, 'w') as w:
+            json.dump(repos, w)
+            print(f"[GithubRepoScraper]: saved scraped data at: {self.save_file_path}")
+            w.close()
+
+
+

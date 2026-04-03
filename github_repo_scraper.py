@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import time
 
 class GithubRepoScraper:
     """
@@ -51,5 +50,9 @@ class GithubRepoScraper:
             print(f"[GithubRepoScraper]: saved scraped data at: {self.save_file_path}")
             w.close()
 
+        print(f"[GithubRepoScraper]: exiting...")
 
 
+if __name__ == "__main__":
+    grs = GithubRepoScraper()
+    grs.scrape_repos()

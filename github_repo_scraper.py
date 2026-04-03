@@ -7,4 +7,8 @@ class GithubRepoScraper:
     """
 
     def __init__(self):
+        self.base_url = "https://github.com/luckysher"
+        self.save_file_path = "repo.json"
+
+    def scrape_repos(self):
         pass

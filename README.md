@@ -1,6 +1,11 @@
 # github_repo_scraper
 Github repositories scraper to scrape all repos with details e.g title, repo type, programming language etc. This project also demonstrate standalone executable (.exe) building of the scraper project for Window OS system.
 
+# setup project
+Run following command in the virtual environment
+
+$ pip install - requirements.txt
+
 # Python version used
  Python 3.10
 
